@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         static string[] arrSuffixChoose = { "txt", "js" };
-        Search s = new Search(new Person("ayala", "chadash", 20), arrSuffixChoose);
+        Search s = new Search(new Person("tami", "yafe", 19), arrSuffixChoose);
         public Form1()
         {
             InitializeComponent();

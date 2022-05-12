@@ -54,7 +54,7 @@ namespace WindowsFormsApp1
             for (int i = 0; i < arrFileSuffix.Length ; i++)
             {
                 string[] thisFile = searchInFile(arrFileSuffix[i]);
-                if (thisFile[1]!=null)
+                if (thisFile[1]!="")
                 {
                     MatchFound(thisFile[0], thisFile[1]);
                 }
@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
             for (int i = 0; i < arrFileSuffix.Length; i++)
             {
                 string[] thisFile = searchInFile(arrFileSuffix[i]);
-                if (thisFile[1] != null)
+                if (thisFile[1] != "")
                 {
                     MatchFound(thisFile[0], thisFile[1]);
                 }
