@@ -48,7 +48,8 @@ namespace WindowsFormsApp1
         {
             string[] arrFile = Directory.GetFiles(path);
             string[] arrFileSuffix = arrFile.Where(f => isWors(f)).ToArray();
-            //string[] arrFileSuffix = arrFile.Where(f => arrSuffixChoose.Where(a => a.Equals(f));
+
+            //string[] arrFileSuffi = arrFile.Where(f => arrSuffixChoose.Where(a => a.Equals(f));
             //(f.Split('.'))[1])
             for (int i = 0; i < arrFileSuffix.Length ; i++)
             {
