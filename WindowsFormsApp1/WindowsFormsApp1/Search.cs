@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
     class Search
     {
         private Object obj;
-        private string[] arrSuffix = { "xml", "json" };
+        public static string[] arrSuffix = { "xml", "json", "js", "txt" };
         public string[] arrSuffixChoose;
         string[] valueMemberToSearch;
         public event mach MatchFound;

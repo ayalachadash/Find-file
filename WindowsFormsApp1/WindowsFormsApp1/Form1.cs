@@ -12,12 +12,18 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        static string[] arrSuffixChoose = { "txt", "js" };
-        Search s = new Search(new Person("tami", "yafe", 19), arrSuffixChoose);
+        private System.Windows.Forms.FolderBrowserDialog fbd;
+        string path = "";
+        static string[] arrSuffixChoose;
         public Form1()
         {
             InitializeComponent();
-
+            int i = 0;
+            foreach (CheckBox c in groupBox1.Controls)
+            {
+                c.Text = Search.arrSuffix[i];
+                i++;
+            }
         }
 
         public void PrintFile(string file, string found)
@@ -30,13 +36,84 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add( "lll");
+            this.fbd = new System.Windows.Forms.FolderBrowserDialog();
+            fbd.ShowNewFolderButton = true;
+            DialogResult result = fbd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                path = fbd.SelectedPath;
+            }
         }
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
+        }
+        public void fullArrSufixx()
+        {
+            int i = 0;
+            foreach (CheckBox c in groupBox1.Controls)
+            {
+                if (c.Checked)
+                {
+                    i++;
+                }
+            }
+            arrSuffixChoose = new string[i];
+            i = 0;
+            foreach (CheckBox c in groupBox1.Controls)
+            {
+                if (c.Checked)
+                {
+                    arrSuffixChoose[i] = c.Text;
+                    i++;
+                }
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
+            fullArrSufixx();
+            Search s = new Search(new Person("ayala", "chadash", 19), arrSuffixChoose);
             s.MatchFound += PrintFile;
-            s.deepSearch("C:\\המחשב שלי\\לימודים\\c# יד\\final project");
+            s.deepSearch(path);
+            //"C:\\המחשב שלי\\לימודים\\c# יד\\final project"
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            fullArrSufixx();
+            Search s = new Search(new Product(1, "bear", 5, 5), arrSuffixChoose);
+            s.MatchFound += PrintFile;
+            s.deepSearch(path);
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            fullArrSufixx();
+            Search s = new Search(new Animal("dog", "bride", true), arrSuffixChoose);
+            s.MatchFound += PrintFile;
+            s.deepSearch(path);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            fullArrSufixx();
+            Search s = new Search(new Person("ayala", "chadash", 19), arrSuffixChoose);
+            s.MatchFound += PrintFile;
+            s.flatSearch(path);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            fullArrSufixx();
+            Search s = new Search(new Product(1, "bear", 5, 5), arrSuffixChoose);
+            s.MatchFound += PrintFile;
+            s.flatSearch(path);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            fullArrSufixx();
+            Search s = new Search(new Animal("dog", "bride", true), arrSuffixChoose);
+            s.MatchFound += PrintFile;
+            s.flatSearch(path);
         }
     }
 }
